@@ -224,7 +224,7 @@ The protocol's long-term objective is to advance Decision Governance Infrastruct
 
 For enterprise review, research engagement, OEM discussion, technical diligence, investment diligence, or controlled specification access:
 
-[Request R.E.T.N.A. Controlled Review Access](https://valueintelligence.io/retna-protocol/)
+[Request R.E.T.N.A. Controlled Review Access](https://valueintelligence.io/retna-protocol/#controlled-review-access)
 
 ---
 
