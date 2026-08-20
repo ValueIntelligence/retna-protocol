@@ -1,0 +1,215 @@
+{
+  "artifact_notice": {
+    "status": "synthetic_public_example",
+    "purpose": "Illustrative R.E.T.N.A. v0.1 Decision Receipt for public technical review.",
+    "schema_notice": "This example is not the complete controlled R.E.T.N.A. receipt schema and does not constitute certification.",
+    "protocol_version": "0.1"
+  },
+  "receipt_header": {
+    "receipt_id": "retna_example_001",
+    "version": "0.1",
+    "created_at": "2026-08-20T22:15:00Z",
+    "expires_at": null
+  },
+  "identity": {
+    "producer": {
+      "actor_id": "producer.example.inventory-agent",
+      "actor_role": "Producer",
+      "actor_type": "agent"
+    },
+    "governor": {
+      "actor_id": "governor.example.policy-service",
+      "actor_role": "Governor",
+      "actor_type": "governance_service"
+    },
+    "executor": {
+      "actor_id": "executor.example.procurement-service",
+      "actor_role": "Executor",
+      "actor_type": "service"
+    }
+  },
+  "authority_context": {
+    "authority_id": "auth.example.procurement-policy",
+    "authority_type": "delegated_operational_authority",
+    "authority_scope": [
+      "inventory_replenishment",
+      "purchase_order_creation"
+    ],
+    "delegation_chain": [
+      "enterprise_policy_authority",
+      "procurement_governor",
+      "governor.example.policy-service"
+    ],
+    "edge_policy_result": "PASS",
+    "verification_status": "VERIFIED",
+    "authority_expiration": "2026-08-21T22:15:00Z"
+  },
+  "decision_envelope": {
+    "decision_id": "decision_example_001",
+    "risk_class": "R2",
+    "action_type": "EXTERNAL_WRITE",
+    "decision_mode": "AUTONOMOUS",
+    "payload_kind": "GOVERNED_ACTION",
+    "proposed_action": {
+      "operation": "create_purchase_order",
+      "summary": "Create a replenishment order for a monitored inventory item."
+    },
+    "target": {
+      "type": "procurement_system",
+      "resource": "example_purchase_order_endpoint"
+    }
+  },
+  "formation_context": {
+    "formation_id": "formation_example_001",
+    "formation_trace_ref": "trace://example/formation/001",
+    "orchestration_lineage": [
+      "sensor_observation",
+      "inventory_state_estimation",
+      "replenishment_candidate_generation"
+    ],
+    "participating_models": [
+      "model.example.inventory-forecast"
+    ],
+    "participating_tools": [
+      "tool.example.inventory-read",
+      "tool.example.supplier-catalog"
+    ],
+    "formation_integrity_status": "VERIFIED"
+  },
+  "state_context": {
+    "state_snapshot_ref_before": "state://example/inventory/item-442/before",
+    "state_snapshot_ref_after": null,
+    "state_delta_summary": {
+      "current_quantity": 2,
+      "reorder_threshold": 4,
+      "candidate_order_quantity": 6
+    },
+    "environment_context": {
+      "location_scope": "example_site",
+      "data_classification": "synthetic"
+    }
+  },
+  "participants": {
+    "agents_involved": [
+      "producer.example.inventory-agent"
+    ],
+    "models_involved": [
+      "model.example.inventory-forecast"
+    ],
+    "tools_invoked": [
+      "tool.example.inventory-read",
+      "tool.example.supplier-catalog"
+    ],
+    "external_services": [
+      "service.example.procurement-catalog"
+    ],
+    "dispatch_trace_ref": "trace://example/dispatch/001"
+  },
+  "evidence": [
+    {
+      "evidence_id": "evidence_example_inventory_001",
+      "type": "inventory_state",
+      "source": "synthetic_physical_state_engine",
+      "timestamp": "2026-08-20T22:14:10Z",
+      "hash": "sha256:synthetic-example-evidence-hash",
+      "location_ref": "evidence://example/inventory/item-442",
+      "summary": "Observed quantity is below the configured replenishment threshold."
+    },
+    {
+      "evidence_id": "evidence_example_supplier_001",
+      "type": "supplier_availability",
+      "source": "synthetic_supplier_catalog",
+      "timestamp": "2026-08-20T22:14:25Z",
+      "hash": "sha256:synthetic-example-supplier-hash",
+      "location_ref": "evidence://example/supplier/item-442",
+      "summary": "Candidate item is available from an approved supplier."
+    }
+  ],
+  "policy_evaluation": {
+    "policy_bundles": [
+      {
+        "bundle_id": "policy.example.procurement",
+        "bundle_version": "2026.08",
+        "authority": "enterprise_policy_authority"
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "constraint.example.inventory_below_threshold",
+        "result": "PASS",
+        "severity": "INFO",
+        "reason_code": "RC_POLICY_PASS"
+      },
+      {
+        "constraint_id": "constraint.example.approved_supplier",
+        "result": "PASS",
+        "severity": "BLOCK",
+        "reason_code": "RC_POLICY_PASS"
+      },
+      {
+        "constraint_id": "constraint.example.purchase_limit",
+        "result": "PASS",
+        "severity": "BLOCK",
+        "reason_code": "RC_POLICY_PASS"
+      }
+    ],
+    "risk_assessment": {
+      "risk_score": 0.18,
+      "risk_factors": [
+        "external_write",
+        "financial_commitment",
+        "bounded_purchase_limit"
+      ]
+    }
+  },
+  "admissibility": {
+    "admissibility_status": "ADMISSIBLE",
+    "admissibility_reason_codes": [
+      "RC_POLICY_PASS"
+    ],
+    "blocking_constraints": [],
+    "authority_validation_result": "PASS",
+    "formation_integrity_result": "PASS",
+    "evidence_sufficiency_result": "PASS",
+    "execution_eligibility": "ELIGIBLE",
+    "admissibility_timestamp": "2026-08-20T22:14:50Z"
+  },
+  "outcome": {
+    "governance_outcome": "ALLOW",
+    "outcome_reason_codes": [
+      "RC_POLICY_PASS",
+      "RC_STATE_TRANSITION_AUTHORIZED"
+    ],
+    "requires_human_confirmation": false,
+    "fallback_path": null,
+    "execution_status": "AUTHORIZED_NOT_YET_EXECUTED",
+    "human_override": null
+  },
+  "governed_state_transition": {
+    "prior_state_ref": "state://example/inventory/item-442/before",
+    "candidate_state": {
+      "purchase_order_status": "proposed",
+      "candidate_order_quantity": 6
+    },
+    "resulting_state_ref": null,
+    "state_transition_status": "AUTHORIZED_PENDING_EXECUTION",
+    "state_transition_timestamp": "2026-08-20T22:14:55Z",
+    "state_transition_reason": "RC_STATE_TRANSITION_AUTHORIZED",
+    "transition_authority_ref": "auth.example.procurement-policy",
+    "transition_receipt_ref": "retna_example_001",
+    "transition_evidence_refs": [
+      "evidence_example_inventory_001",
+      "evidence_example_supplier_001"
+    ]
+  },
+  "integrity_and_audit": {
+    "receipt_hash": "sha256:synthetic-example-receipt-hash",
+    "previous_receipt_hash": null,
+    "signature": null,
+    "retention_class": "RETNA-B_EXAMPLE",
+    "access_class": "PUBLIC_SYNTHETIC_EXAMPLE",
+    "persistence_status": "PERSISTED",
+    "receipt_store_ref": "receipt-store://example/retna_example_001",
+    "canonicalization_profile": "illustrative-json-canonicalization-v0.1"
+  }
+}
