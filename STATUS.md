@@ -53,7 +53,7 @@ Controlled materials are available to qualified enterprise, technical, legal, re
 
 Request controlled review access:
 
-https://valueintelligence.io/retna-protocol/
+[Request R.E.T.N.A. Controlled Review Access](https://valueintelligence.io/retna-protocol/#controlled-review-access)
 
 ---
 
