@@ -471,7 +471,7 @@ For protocol review, enterprise collaboration, research engagement, OEM discussi
 
 **Value Intelligence Solutions Inc.**
 
-[Request R.E.T.N.A. Controlled Review Access](https://valueintelligence.io/retna-protocol/)
+[Request R.E.T.N.A. Controlled Review Access](https://valueintelligence.io/retna-protocol/#controlled-review-access)
 
 ---
 
