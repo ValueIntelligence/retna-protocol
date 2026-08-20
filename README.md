@@ -392,7 +392,7 @@ are available to qualified enterprise, technical, legal, regulatory, OEM, invest
 
 **Request controlled review access:**
 
-https://valueintelligence.io/retna-protocol/
+[Request R.E.T.N.A. Controlled Review Access](https://valueintelligence.io/retna-protocol/#controlled-review-access)
 
 ---
 
